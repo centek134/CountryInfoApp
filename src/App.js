@@ -7,9 +7,15 @@ class App extends Component{
   state = {
     country:[],
     actualCountry: {
+      flag:'',
+      region:'',
+      subRegion:'',
       capital:'',
-      currency:'',
-      flag:''
+      language:'',
+      population: 0,
+      currencyName:'',
+      currSymbol:'',
+      time:''
 
     }
   }
@@ -24,10 +30,27 @@ class App extends Component{
   Checkme = (e) =>{
     this.state.country.forEach(country => {
       if(e.target.value === country.name){
+          let langs = '';
+          let timesss = '';
+          for (const time of country.timezones){
+            timesss += `${time}, `;
+          };
+          timesss = timesss.slice(0, timesss.length - 2);
+          country.languages.forEach(lang => langs+=`${lang.name}, `);
+          langs = langs.slice(0, langs.length - 2);
+
+
           this.setState({actualCountry:{
+
+            flag: country.flag,
+            region: country.region,
+            subRegion: country.subregion,
             capital: country.capital,
-            currency: `${country.currencies[0].name} ${country.currencies[0].symbol}`,
-            flag: country.flag
+            language: langs,
+            population: country.population.toLocaleString('pl-PL'),
+            currencyName: country.currencies[0].name,
+            currSymbol: country.currencies[0].symbol,
+            time: timesss
           }})
         }
     })
@@ -35,19 +58,28 @@ class App extends Component{
 
   render(){
     return (
-      <div>
+      <div className = "wrapper">
+        <div className = "flag">
+          <img src = {this.state.actualCountry.flag} alt = "flag"></img>
+        </div>
         <select onChange = {(e) => this.Checkme(e)}>
+          <option value = "none"></option>
           {this.state.country.map(opt => {
             return(
               <option key = {opt.name} value = {`${opt.name}`}>{`${opt.name}`}</option>
             )
           })}
         </select>
-          <div>
-            <img src = {this.state.actualCountry.flag} alt = "flag"></img>
-            <p>{this.state.actualCountry.capital}</p>
-            <p>{this.state.actualCountry.currency}</p> 
-          </div>
+        <div className = "infoTable">
+          <p><span>Region:</span> {this.state.actualCountry.region}</p>
+          <p><span>Subregion:</span>  {this.state.actualCountry.subRegion}</p>
+          <p><span>Capital:</span>  {this.state.actualCountry.capital}</p>
+          <p><span>Language:</span> {this.state.actualCountry.language}</p>
+          <p><span>Population: </span>{this.state.actualCountry.population}</p>
+          <p><span>Currency name:</span> {this.state.actualCountry.currencyName}</p>
+          <p><span>Currency symbol:</span> {this.state.actualCountry.currSymbol}</p> 
+          <p><span>Time zone:</span> {this.state.actualCountry.time}</p>
+        </div>
       </div>
     );
   }
