@@ -58,27 +58,27 @@ class App extends Component{
 
   render(){
     return (
-      <div className = "wrapper">
-        <div className = "flag">
-          <img src = {this.state.actualCountry.flag} alt = "flag"></img>
-        </div>
-        <select onChange = {(e) => this.Checkme(e)}>
-          <option value = "none"></option>
-          {this.state.country.map(opt => {
-            return(
-              <option key = {opt.name} value = {`${opt.name}`}>{`${opt.name}`}</option>
-            )
-          })}
-        </select>
-        <div className = "infoTable">
-          <p><span>Region:</span> {this.state.actualCountry.region}</p>
-          <p><span>Subregion:</span>  {this.state.actualCountry.subRegion}</p>
-          <p><span>Capital:</span>  {this.state.actualCountry.capital}</p>
-          <p><span>Language:</span> {this.state.actualCountry.language}</p>
-          <p><span>Population: </span>{this.state.actualCountry.population}</p>
-          <p><span>Currency name:</span> {this.state.actualCountry.currencyName}</p>
-          <p><span>Currency symbol:</span> {this.state.actualCountry.currSymbol}</p> 
-          <p><span>Time zone:</span> {this.state.actualCountry.time}</p>
+      <div className = "wrap">
+        <div className = "middle">
+          <div className = "flag" style = {{backgroundImage: `url(${this.state.actualCountry.flag})`}}></div>
+          <div className = "infoTable">
+            <select className = "sel" onChange = {(e) => this.Checkme(e)}>
+              <option value = "none">Select Country</option>
+              {this.state.country.map(opt => {
+                return(
+                  <option key = {opt.name} value = {`${opt.name}`}>{`${opt.name}`}</option>
+                  )
+                })}
+            </select>
+            <p><span>Region:</span> {this.state.actualCountry.region}</p>
+            <p><span>Subregion:</span>  {this.state.actualCountry.subRegion}</p>
+            <p><span>Capital:</span>  {this.state.actualCountry.capital}</p>
+            <p><span>Language:</span> {this.state.actualCountry.language}</p>
+            <p><span>Population: </span>{this.state.actualCountry.population}</p>
+            <p><span>Currency name:</span> {this.state.actualCountry.currencyName}</p>
+            <p><span>Currency symbol:</span> {this.state.actualCountry.currSymbol}</p> 
+            <p><span>Time zone:</span> {this.state.actualCountry.time}</p>
+          </div>
         </div>
       </div>
     );
