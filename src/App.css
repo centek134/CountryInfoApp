@@ -1,6 +1,7 @@
 .wrap{
     width: 100%;
     height: 100vh;
+    background-image: radial-gradient(circle, #d16ba5, #c777b9, #ba83ca, #aa8fd8, #9a9ae1, #8aa7ec, #79b3f4, #69bff8, #52cffe, #41dfff, #46eefa, #5ffbf1);
 }
 .middle{
     display: flex;
@@ -13,12 +14,11 @@
     box-shadow: 0px 0px 18px 0px rgba(0,0,0,0.75);
 -webkit-box-shadow: 0px 0px 18px 0px rgba(0,0,0,0.75);
 -moz-box-shadow: 0px 0px 18px 0px rgba(0,0,0,0.75);
-    background: rgb(2,0,36);
-    background: linear-gradient(0deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 35%, rgba(0,212,255,1) 100%);
+background-image: linear-gradient(to bottom, #051937, #004d7a, #008793, #00bf72, #a8eb12);
 }
 .flag{
-    width: 500px;
-    height: 350px;
+    width: 660px;
+    height: 330px;
     border: 2px solid #fff;
     background-position: center;
     background-size: cover;
@@ -47,3 +47,92 @@
     text-align: center;
     border: 2px solid black;
 }
+
+
+@media screen and (min-width: 320px) and (max-width:480px){
+
+    .wrap{
+        height: 850px;
+    }
+    .middle{
+        width: 100%;
+    }
+    .flag{
+        width: 310px;
+        height: 170px;
+    }
+    @media screen and (orientation: landscape){
+        .flag{
+            width: 350px;
+            height: 175px;
+        }
+    }
+}
+@media screen and (min-width: 481px) and (max-width:768px){
+    .wrap{
+        height: 850px;
+    }
+    .middle{
+        width: 100%;
+    }
+    .flag{
+        width: 450px;
+        height: 225px;
+    }
+}
+@media screen and (min-width: 769px) and (max-width:1024px){
+    .wrap{
+        height: 900px;
+    }
+    .middle{
+        width: 85%;
+    }
+    .flag{
+        width: 550px;
+        height: 275px;
+    }
+}
+@media screen and (min-width: 1025px) and (max-width:1200px){
+    .middle{
+        width: 70%;
+    }
+    .flag{
+        width: 620px;
+        height: 310px;
+    }
+}
+@media screen and (min-width: 1201px) and (max-width:1440px){
+    .middle{
+        width: 60%;
+    }
+    .flag{
+        width: 620px;
+        height: 310px;
+    }
+}
+@media screen and (min-width: 1441px) and (max-width:1700px){
+    .middle{
+        width: 50%;
+    }
+    .flag{
+        width: 620px;
+        height: 310px;
+    }
+}
+@media screen and (min-width: 2047px) and (max-width:2100px) {
+    .infoTable span{
+        font-size: 31px;
+    }
+    .infoTable p{
+        font-size: 25px;
+    }
+    .middle .infoTable .sel{
+        outline: none;
+        width: 100%;
+        height: 50px;
+        font-size: 26px;
+        text-align: center;
+        border: 4px solid black;
+    }
+}
+
