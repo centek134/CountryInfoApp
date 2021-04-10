@@ -4,6 +4,9 @@ import './App.css';
 
 class App extends Component{
   
+
+  //state variables for keeping fetched data
+
   state = {
     country:[],
     actualCountry: {
@@ -23,24 +26,23 @@ class App extends Component{
   componentDidMount(){
     fetch('https://restcountries.eu/rest/v2/all')
     .then(res => res.json())
-    .then(data => this.setState({country:data}))
-    .then(() => console.log(this.state.country));
+    .then(data => this.setState({country:data}));
   }
 
   Checkme = (e) =>{
-    this.state.country.forEach(country => {
+    this.state.country.forEach(country => {  //looping through array with countries and finding match with choosen one
       if(e.target.value === country.name){
           let langs = '';
           let timesss = '';
           for (const time of country.timezones){
-            timesss += `${time}, `;
+            timesss += `${time}, `;   //if country got more than 1 time zone we are adding it to string
           };
-          timesss = timesss.slice(0, timesss.length - 2);
+          timesss = timesss.slice(0, timesss.length - 2);   // deleting "," at last place of last word
           country.languages.forEach(lang => langs+=`${lang.name}, `);
           langs = langs.slice(0, langs.length - 2);
 
 
-          this.setState({actualCountry:{
+          this.setState({actualCountry:{  //setting state variables, they are going to be displayed in site
 
             flag: country.flag,
             region: country.region,
@@ -83,6 +85,6 @@ class App extends Component{
       </div>
     );
   }
-}// later add another stats
+}
 
 export default App;
